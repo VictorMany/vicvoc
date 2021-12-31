@@ -56,7 +56,7 @@ export default function PostCard({ post, buttons = true }) {
             <div className="card p-3 h-100">
                 <h3>{post.title}</h3>
                 <p>{post.content}</p>
-                <a href={`https://${post.link}`} target="_blank">{post.link}</a>
+                <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
                 <small>{new Date(post.createdAt).toLocaleDateString()}</small>
                 <br />
                 {
