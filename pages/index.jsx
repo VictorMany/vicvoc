@@ -1,4 +1,5 @@
 import Layout from "../components/Layout"
+import dbConnect from "../lib/dbConnect";
 import utilStyles from '../styles/utils.module.css'
 
 export default function Home() {
@@ -13,4 +14,17 @@ export default function Home() {
       </section>
     </Layout>
   )
+}
+
+
+
+
+export async function getServerSideProps() {
+  try {
+    await dbConnect();
+    
+    return { props: { courses: 123 } }
+  } catch (error) {
+    console.log(error)
+  }
 }

@@ -6,7 +6,6 @@ import utilStyles from '../styles/utils.module.css'
 
 
 export default function Layout({ children, title, description, home }) {
-    console.log(home);
     return (
         <div className={styles.container}>
             <Head>
@@ -38,13 +37,13 @@ export default function Layout({ children, title, description, home }) {
                                     className={utilStyles.borderCircle}
                                     height={108}
                                     width={108}
-                                    alt={name}
+                                    alt={title}
                                 />
                             </a>
                         </Link>
                         <h2 className={utilStyles.headingLg}>
                             <Link href="/">
-                                <a className={utilStyles.colorInherit}>{name}</a>
+                                <a className={utilStyles.colorInherit}>{title}</a>
                             </Link>
                         </h2>
                     </>
@@ -56,6 +55,9 @@ export default function Layout({ children, title, description, home }) {
                 </Link>
                 <Link href="/blog">
                     <a>Blog | </a>
+                </Link>
+                <Link href="/courses">
+                    <a>Courses | </a>
                 </Link>
                 <Link href="/contact">
                     <a>Contact | </a>
