@@ -1,4 +1,5 @@
-import 'bootswatch/dist/morph/bootstrap.min.css'
+import 'bootswatch/dist/lux/bootstrap.min.css'
+import '../styles/globals.css'
 
 function MyApp({
   Component,

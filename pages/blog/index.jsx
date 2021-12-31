@@ -1,45 +1,48 @@
-import Layout from "../../components/Layout"
-import Link from "next/link"
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import PostCard from '../../components/PostCard';
+import styles from '../../styles/Home.module.css';
 
-export default function index({ data }) {
+export default function Index({ posts }) {
+  return (
+    <Layout home={false} title={'publicated'}>
+      <div>
+        <Head>
+          <title>Publicated</title>
+        </Head>
+        <main>
+          <div className={styles.container}>
+            {posts.length === 0 ? (
+              <h2>No added posts</h2>
+            ) : (
+              <div className='row'>
+                {posts.map((post, i) => (
+                  <PostCard post={post} key={i} buttons={false}/>
+                ))}
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    </Layout>
 
-    return (
-        <Layout>
-            <h1>Lista de posts</h1>
-            {
-                data.map(({ id, body, title }) => {
-                    return (
-
-                        <div key={id}>
-                            <h3><Link href={`/blog/${id}`}>
-                                <a>
-                                    {id} - {title}
-                                </a>
-                            </Link>
-                            </h3>
-                            <p>{body}</p>
-                        </div>
-                    )
-                })
-            }
-        </Layout >
-    )
+  );
 }
 
+export async function getServerSideProps(ctx) {
+  // get the current environment
+  let dev = process.env.NODE_ENV !== 'production';
+  let { DEV_URL, PROD_URL } = process.env;
 
-/**Solo se ejecuta del lado del servidor */
-/**Este no jala para consukta de apis en tiempo real  */
-export async function getStaticProps() {
-    try {
-        const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-        //Data es nuestro arreglo
-        const data = await res.json();
-        return {
-            props: {
-                data
-            }
-        }
-    } catch (error) {
-        console.log(error)
-    }
+  // request posts from api
+  let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts`);
+  // extract the data
+  let data = await response.json();
+
+  console.log(data)
+  return {
+    props: {
+      posts: data['message'],
+    },
+  };
 }
