@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <nav className='bg-secondary p-3 mb-4' style={{ borderRadius: '0.5rem' }}>
             <Link href="/">
-                <a>Inicio | </a>
+                <a>Home | </a>
             </Link>
             <Link href="/blog">
                 <a>Blog | </a>

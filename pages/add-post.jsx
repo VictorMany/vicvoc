@@ -64,7 +64,7 @@ export default function AddPost() {
                                 <h3 >{message}</h3>
                             </div>
                         ) : null}
-                        <div className="card p-3 mx-auto bg-dark text-white" style={{ borderRadius: '0.5rem', width: '70%' }}>
+                        <div className="card p-3 mx-auto bg-dark text-white" style={{ borderRadius: '0.5rem' }}>
                             <div >
                                 <label>Title</label>
                                 <br />
