@@ -7,15 +7,17 @@ export default function about() {
                 <h3>
                     About this page
                 </h3>
-                <p> This is an CRUD example page.</p>
+                <p>This is a sample CRUD page.</p>
                 <p>
 
-                    I used NextJS (the framework for react) because this framework integrates the front and the back-end in only one project
+                 
 
-                    It is easier to use routes with the component Link.
+                    I used NextJS (the react framework) because this framework integrates the front and the back end in a single project. It is easier to use routes with the Link component.
+
 
                 </p>
-                For the back-end I used MongoDB such my database because NextJS provide us a easy way to integrate this database
+                                   For the backend I used MongoDB as my database because NextJS provides us a simple way to use it
+
                 <p></p>
             </div>
         </Layout>
