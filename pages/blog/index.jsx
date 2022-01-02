@@ -8,7 +8,7 @@ export default function Index({ posts }) {
     <Layout home={false} title={'publicated'}>
       <div>
         <Head>
-          <title>Publicated</title>
+          <title>Published</title>
         </Head>
         <main>
           <div className={styles.container}>
@@ -17,7 +17,7 @@ export default function Index({ posts }) {
             ) : (
               <div className='row'>
                 {posts.map((post, i) => (
-                  <PostCard post={post} key={i} buttons={false}/>
+                  <PostCard post={post} key={i} buttons={false} />
                 ))}
               </div>
             )}
