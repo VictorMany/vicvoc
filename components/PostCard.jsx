@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import dynamic from "next/dynamic";
+
+
 export default function PostCard({ post, buttons = true }) {
     const [publishing, setPublishing] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
 
+    const ReactTinyLink = dynamic(
+        () => {
+            return import("react-tiny-link").then((mod) => mod.ReactTinyLink);
+        },
+        { ssr: false }
+    );
+
     // Publish post
     const publishPost = async (postId) => {
         // change publishing state
         setPublishing(true);
-
         try {
             // Update post
             await fetch('/api/posts', {
@@ -58,7 +67,15 @@ export default function PostCard({ post, buttons = true }) {
                     <div className="card p-3 h-100">
                         <h3>{post.title}</h3>
                         <p>{post.content}</p>
-                        <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
+
+                        <ReactTinyLink
+                            cardSize="small"
+                            showGraphic={true}
+                            maxLine={2}
+                            minLine={1}
+                            url={`${post.link}`}
+                        />
+
                         <small>{new Date(post.createdAt).toLocaleDateString()}</small>
                         <br />
                         {
@@ -85,7 +102,16 @@ export default function PostCard({ post, buttons = true }) {
                         post.published ? (<div className="card p-3 h-100">
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
-                            <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
+
+
+                            <ReactTinyLink
+                                cardSize="small"
+                                showGraphic={true}
+                                maxLine={2}
+                                minLine={1}
+                                url={`${post.link}`}
+                            />
+
                             <small>{new Date(post.createdAt).toLocaleDateString()}</small>
                             <br />
                             {
