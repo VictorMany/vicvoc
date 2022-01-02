@@ -5,7 +5,7 @@ import styles from '../../styles/Home.module.css';
 
 export default function Index({ posts }) {
   return (
-    <Layout home={false} title={'publicated'}>
+    <Layout home={false} title={'Published'}>
       <div>
         <Head>
           <title>Published</title>
