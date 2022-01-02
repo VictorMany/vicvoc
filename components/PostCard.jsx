@@ -53,31 +53,63 @@ export default function PostCard({ post, buttons = true }) {
     return (
 
         <div className='col-12 col-md-6 p-2' >
-            <div className="card p-3 h-100">
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
-                <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
-                <small>{new Date(post.createdAt).toLocaleDateString()}</small>
-                <br />
-                {
+            {
+                buttons ? (
+                    <div className="card p-3 h-100">
+                        <h3>{post.title}</h3>
+                        <p>{post.content}</p>
+                        <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
+                        <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+                        <br />
+                        {
 
-                    (!post.published && buttons ? (
-                        <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
-                            {publishing ? 'Publishing' : 'Publish'}
-                        </button>
-                    ) : null)
-                }
+                            (!post.published && buttons ? (
+                                <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
+                                    {publishing ? 'Publishing' : 'Publish'}
+                                </button>
+                            ) : null)
+                        }
 
-                {
+                        {
+                            (buttons ? (
+                                <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
+                                    {deleting ? 'Deleting' : 'Delete'
+                                    }
+                                </button>
+                            ) : null)}
 
-                    (buttons ? (
-                        <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
-                            {deleting ? 'Deleting' : 'Delete'
+                    </div>
+                )
+                    :
+                    (
+                        post.published ? (<div className="card p-3 h-100">
+                            <h3>{post.title}</h3>
+                            <p>{post.content}</p>
+                            <a href={`https://${post.link}`} target="_blank" rel="noreferrer">{post.link}</a>
+                            <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+                            <br />
+                            {
+
+                                (!post.published && buttons ? (
+                                    <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
+                                        {publishing ? 'Publishing' : 'Publish'}
+                                    </button>
+                                ) : null)
                             }
-                        </button>
-                    ) : null)}
 
-            </div>
+                            {
+                                (buttons ? (
+                                    <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
+                                        {deleting ? 'Deleting' : 'Delete'
+                                        }
+                                    </button>
+                                ) : null)}
+
+                        </div>
+                        ) : null
+                    )
+            }
+
         </div >
 
 

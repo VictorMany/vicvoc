@@ -39,7 +39,7 @@ export async function getServerSideProps(ctx) {
   // extract the data
   let data = await response.json();
 
-  console.log(data)
+  //console.log(data)
   return {
     props: {
       posts: data['message'],
