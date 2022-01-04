@@ -4,22 +4,25 @@ import Link from 'next/link';
 const Nav = () => {
 
     return (
-        <nav className='bg-warning p-3 mb-4' style={{ borderRadius: '0.5rem' }}>
+        <nav className='p-2 d-flex justify-content-around fw-lighter' style={{width: '100%'}}>
             <Link href="/">
-                <a>Home | </a>
+                <a>HOME</a>
             </Link>
+
             <Link href="/blog">
-                <a>Blog | </a>
+                <a>PUBLISHED</a>
             </Link>
+
             <Link href="/add-post">
-                <a>Add post | </a>
+                <a>ADD POST</a>
             </Link>
+
             <Link href="/contact">
-                <a>Contact | </a>
+                <a>CONTACT</a>
             </Link>
 
             <Link href="/about">
-                <a>About</a>
+                <a>ABOUT</a>
             </Link>
         </nav>
     );

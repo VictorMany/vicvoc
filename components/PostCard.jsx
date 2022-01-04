@@ -61,7 +61,7 @@ export default function PostCard({ post, buttons = true }) {
 
     return (
 
-        <div className='col-12 col-md-4 p-2' >
+        <div className='col-12 col-md-4 col-lg-3 p-2' >
             {
 
                 buttons ? (

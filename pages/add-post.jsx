@@ -51,7 +51,7 @@ export default function AddPost() {
 
     return (
         <Layout title={'Add-post'}>
-            <div className='p-2'>
+            <div className='p-2 mx-auto' style={{maxWidth: 600}}>
                 <div>
                     <form onSubmit={handlePost} >
                         {error ? (
