@@ -8,8 +8,7 @@ export default function Home({ posts }) {
     <Layout home={true}>
       <div>
         <Head>
-          <title>Home</title>
-
+          <title>Vicvoc</title>
         </Head>
         <main>
           <div className={styles.container}>

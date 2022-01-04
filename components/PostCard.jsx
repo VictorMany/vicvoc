@@ -1,12 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import utilStyles from '../styles/utils.module.css'
-import preview from '../utils';
-import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
-
-
-
+import { LinkPreview } from '@dhaiwat10/react-link-preview';
+import Image from 'next/image'
 
 export default function PostCard({ post, buttons = true }) {
     const [publishing, setPublishing] = useState(false);
@@ -14,19 +10,7 @@ export default function PostCard({ post, buttons = true }) {
     const router = useRouter();
 
 
-    try {
-        getLinkPreview(
-            post.link,
-            {
-                headers: {
-                    "Access-Control-Allow-Origin'": "*", // fetches with googlebot crawler user agent
-                    "Access-Control-Allow-Origin'": "http://localhost:3000", // fetches with googlebot crawler user agent
-                  },
-            }
-        ).then((data) => console.debug(data));
-    } catch (error) {
-        console.log(error)
-    }
+
 
     // Publish post
     const publishPost = async (postId) => {
@@ -82,50 +66,22 @@ export default function PostCard({ post, buttons = true }) {
 
                 buttons ? (
                     <div className="card p-3 h-100">
-                        <h3>{post.title}</h3>
+                        <h2>{post.title}</h2>
                         <p>{post.content}</p>
-
-                        <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+                        <LinkPreview url={post.link} descriptionLength={100} primaryTextColor='gray' className='fw-lighter fs-6 overflow-hidden' width='100%' imageHeight='150px' fallbackImageSrc='/img/nf.jpeg' fallback={(<a className='card p-5 border border-1' href={post.link} target="_blank" rel="noreferrer">{post.link}
+                            {post.link.includes('youtube') ? (<div className='d-flex justify-content-center'> <Image src='/img/yt.png' width='266.6666px' height='150px'></Image></div>) : null}</a>)} />
                         <br />
-                        {
-
-                            (!post.published && buttons ? (
-                                <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
-                                    {publishing ? 'Publishing' : 'Publish'}
-                                </button>
-                            ) : null)
-                        }
-
-                        {
-                            (buttons ? (
-                                <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
-                                    {deleting ? 'Deleting' : 'Delete'
-                                    }
-                                </button>
-                            ) : null)}
-
-                    </div>
-                )
-                    :
-                    (
-                        post.published ? (<div className="card p-3 h-100">
-                            <h3>{post.title}</h3>
-                            <p>{post.content}</p>
-
-
-
-
-                            <small>{new Date(post.createdAt).toLocaleDateString()}</small>
-                            <br />
+                        <div className='mt-auto'>
+                            <small className='mx-auto'>{new Date(post.createdAt).toLocaleDateString()}</small>
+                            <hr />
                             {
-
                                 (!post.published && buttons ? (
                                     <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
                                         {publishing ? 'Publishing' : 'Publish'}
                                     </button>
                                 ) : null)
                             }
-
+                            <br />
                             {
                                 (buttons ? (
                                     <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
@@ -133,7 +89,24 @@ export default function PostCard({ post, buttons = true }) {
                                         }
                                     </button>
                                 ) : null)}
+                        </div>
 
+                    </div>
+                )
+                    :
+                    (
+                        post.published ? (<div className="card p-3 h-100">
+                            <h2>{post.title}</h2>
+                            <p>{post.content}</p>
+                            <LinkPreview url={post.link} descriptionLength={100} primaryTextColor='gray' className='fw-lighter fs-6 overflow-hidden' width='100%' imageHeight='150px' fallbackImageSrc='/img/nf.jpeg' fallback={(<a className='card p-5 border border-1' href={post.link} target="_blank" rel="noreferrer">{post.link}
+                                {post.link.includes('youtube') ? (<div className='d-flex justify-content-center'> <Image src='/img/yt.png' width='266.6666px' height='150px'></Image></div>) : null}</a>)} />
+                            <br />
+
+
+
+                            <div className='mt-auto'>
+                                <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+                            </div>
                         </div>
                         ) : null
                     )
