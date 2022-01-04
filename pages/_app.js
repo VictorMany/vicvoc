@@ -1,4 +1,4 @@
-import 'bootswatch/dist/lux/bootstrap.min.css'
+import 'bootswatch/dist/sketchy/bootstrap.min.css'
 import '../styles/globals.css'
 
 function MyApp({

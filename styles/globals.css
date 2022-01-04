@@ -22,3 +22,8 @@ h1 {
 h2 {
   color: peru;
 }
+
+.title{
+  color: red !important;
+  font-size: 14px !important;
+}

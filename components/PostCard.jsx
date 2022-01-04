@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import React from 'react'
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import utilStyles from '../styles/utils.module.css'
+import preview from '../utils';
+import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
 
-import dynamic from "next/dynamic";
+
 
 
 export default function PostCard({ post, buttons = true }) {
@@ -9,12 +13,20 @@ export default function PostCard({ post, buttons = true }) {
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
 
-    const ReactTinyLink = dynamic(
-        () => {
-            return import("react-tiny-link").then((mod) => mod.ReactTinyLink);
-        },
-        { ssr: false }
-    );
+
+    try {
+        getLinkPreview(
+            post.link,
+            {
+                headers: {
+                    "Access-Control-Allow-Origin'": "*", // fetches with googlebot crawler user agent
+                    "Access-Control-Allow-Origin'": "http://localhost:3000", // fetches with googlebot crawler user agent
+                  },
+            }
+        ).then((data) => console.debug(data));
+    } catch (error) {
+        console.log(error)
+    }
 
     // Publish post
     const publishPost = async (postId) => {
@@ -37,6 +49,7 @@ export default function PostCard({ post, buttons = true }) {
             return setPublishing(false);
         }
     };
+
     // Delete post
     const deletePost = async (postId) => {
         //change deleting state
@@ -59,22 +72,18 @@ export default function PostCard({ post, buttons = true }) {
             return setDeleting(false);
         }
     };
+
+
+
     return (
 
-        <div className='col-12 col-md-6 p-2' >
+        <div className='col-12 col-md-4 p-2' >
             {
+
                 buttons ? (
                     <div className="card p-3 h-100">
                         <h3>{post.title}</h3>
                         <p>{post.content}</p>
-
-                        <ReactTinyLink
-                            cardSize="small"
-                            showGraphic={true}
-                            maxLine={2}
-                            minLine={1}
-                            url={`${post.link}`}
-                        />
 
                         <small>{new Date(post.createdAt).toLocaleDateString()}</small>
                         <br />
@@ -104,13 +113,7 @@ export default function PostCard({ post, buttons = true }) {
                             <p>{post.content}</p>
 
 
-                            <ReactTinyLink
-                                cardSize="small"
-                                showGraphic={true}
-                                maxLine={2}
-                                minLine={1}
-                                url={`${post.link}`}
-                            />
+
 
                             <small>{new Date(post.createdAt).toLocaleDateString()}</small>
                             <br />
@@ -140,4 +143,9 @@ export default function PostCard({ post, buttons = true }) {
 
 
     );
+
+
 }
+
+
+

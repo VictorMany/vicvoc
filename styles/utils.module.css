@@ -53,3 +53,9 @@
 .lightText {
     color: #666;
 }
+
+.textCard {
+    font-size: 12px;
+    color: rgb(165, 47, 47) !important;
+    
+}

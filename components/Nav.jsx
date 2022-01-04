@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Nav = () => {
 
     return (
-        <nav className='bg-secondary p-3 mb-4' style={{ borderRadius: '0.5rem' }}>
+        <nav className='bg-warning p-3 mb-4' style={{ borderRadius: '0.5rem' }}>
             <Link href="/">
                 <a>Home | </a>
             </Link>
