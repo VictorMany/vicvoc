@@ -4,12 +4,10 @@ import { useRouter } from 'next/router';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import Image from 'next/image'
 
-export default function PostCard({ post, buttons = true }) {
+export default function PostCard({ post, buttons = true, searching = '' }) {
     const [publishing, setPublishing] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
-
-
 
     // Publish post
     const publishPost = async (postId) => {

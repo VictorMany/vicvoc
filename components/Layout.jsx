@@ -6,9 +6,7 @@ import utilStyles from '../styles/utils.module.css'
 import Nav from "./Nav"
 import NProgress from "nprogress";
 import React, { useEffect, useState } from 'react'
-import router, { useRouter } from "next/router";
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css';
+import router from "next/router";
 
 export default function Layout({ children, title, description, home }) {
 
@@ -25,28 +23,7 @@ export default function Layout({ children, title, description, home }) {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, [])
-    let today;
-    function cambiar() {
-        try {
-            today = new Date().toLocaleString();
-            setDate(today);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    today = new Date().toLocaleString();
-    const [search, setSearch] = useState('');
-    const [date, setDate] = useState(today);
 
-    const onChange = (event) => {
-        try {
-            setSearch(event.target.value);
-        } catch (error) {
-            console.log(error)
-        }
-    };
-
-    setInterval(cambiar, 1000);
 
     return (
         <div>
@@ -60,8 +37,21 @@ export default function Layout({ children, title, description, home }) {
             <header className={styles.header}>
                 <div className="bg-blue-400 w-100 p-2 row bg-navbar d-flex justify-content-between">
                     <div className="col d-flex justify-content-center justify-content-md-start col-12 col-md-6">
-                        <img src="https://img.icons8.com/ios-filled/48/000000/linkedin.png" height={40} width={40} className="me-3" />
-                        <img src="https://img.icons8.com/ios-filled/50/000000/github.png" height={40} width={40} />
+                        <Link href='https://www.linkedin.com/in/victor-manuel-velazquez-fuentes-bab088156/'>
+                            <a target="_blank" rel="noreferrer">
+                                <img src="https://img.icons8.com/ios-filled/48/1866D0/linkedin.png" height={40} width={40} className="me-3" />
+                            </a>
+                        </Link>
+                        <Link href='https://github.com/VictorMany'>
+                            <a target="_blank" rel="noreferrer">
+                                <img src="https://img.icons8.com/ios-filled/50/1866D0/github.png" height={40} width={40} className="me-3" />
+                            </a>
+                        </Link>
+                        <Link href='https://portfolio-vic-projects.vercel.app'>
+                            <a target="_blank" rel="noreferrer">
+                                <img src="https://img.icons8.com/ios-filled/50/1866D0/copy-link.png" height={40} width={40} />
+                            </a>
+                        </Link>
                     </div>
                     <div className="col-12 col-md-6 d-flex justify-content-end">
                         <Nav></Nav>
@@ -81,7 +71,7 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 text-primary col-12 col-md-6">
+                                <div className="p-2 text-primary col-12 col-md-6 mb-3">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards. Each card contains the following structure</p>
@@ -92,12 +82,7 @@ export default function Layout({ children, title, description, home }) {
                                         <li>Created date (Auto)</li>
                                     </ul>
                                 </div>
-                                <div className='ms-auto mt-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center'>
-                                    <div className="row d-flex align-content-end justify-content-md-end justify-content-center">
-                                        <label type="text" className="w-100 mb-2 mt-2 text-primary fw-bold">{date.toString()}</label>
-                                        <input type="text" className="w-100" placeholder="Search" value={search} onInput={onChange} />
-                                    </div>
-                                </div>
+
                             </div>
                         ) : (
                             <div className="row d-flex justify-content-md-start justify-content-center align-items-center">
@@ -111,13 +96,13 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 text-primary col-12 col-md-6">
+                                <div className="p-2 text-primary col-12 col-md-6 mb-3">
                                     <h2 className={`${utilStyles.heading2Xl}`}>{title}</h2>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards</p>
-                                   
+
                                 </div>
-                                
+
                             </div>
                         )
                     }
