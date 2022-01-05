@@ -8,11 +8,11 @@ export default function contact() {
         <Layout title={'Contact'}>
 
             <div className="card p-2">
-                <div className="row d-flex align-items-center">
-                    <div className='col-3'>
-                        <Image src="https://avatars.githubusercontent.com/u/61021780?v=4" width={100} height={100} className={`col ${utilStyles.borderCircle}`} />
-                    </div>
-                    <div className="col"> <h4>Victor Manuel Velázquez Fuentes</h4></div>
+                <div className="d-flex align-items-center">
+
+                    <Image src="https://avatars.githubusercontent.com/u/61021780?v=4" width={100} height={100} className={` ${utilStyles.borderCircle}`} />
+
+                    <h4 className='ms-4'>Victor Manuel Velázquez Fuentes</h4>
                 </div>
             </div>
             <div className="row" style={{ fontSize: 12 }}>
@@ -75,6 +75,6 @@ export default function contact() {
 
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }

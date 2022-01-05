@@ -4,25 +4,25 @@ import Link from 'next/link';
 const Nav = () => {
 
     return (
-        <nav className='p-2 d-flex justify-content-around fw-lighter' style={{width: '100%'}}>
+        <nav className='p-2 d-flex justify-content-around' style={{width: '100%'}}>
             <Link href="/">
-                <a>HOME</a>
+                <a>Home</a>
             </Link>
 
             <Link href="/blog">
-                <a>PUBLISHED</a>
+                <a>Published</a>
             </Link>
 
             <Link href="/add-post">
-                <a>ADD POST</a>
+                <a>Add post</a>
             </Link>
 
             <Link href="/contact">
-                <a>CONTACT</a>
+                <a>Contact</a>
             </Link>
 
             <Link href="/about">
-                <a>ABOUT</a>
+                <a>About</a>
             </Link>
         </nav>
     );
