@@ -60,7 +60,7 @@ function Home({ posts }) {
                     ))
                   ) :
                   (
-                    posts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()) || post.content.toLowerCase().includes(search.toLowerCase()) || post.link.toLowerCase().includes(search.toLowerCase()) || post.createdAt.toLowerCase().includes(search.toLowerCase())).map((post, i) => (
+                    posts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()) || post.content.toLowerCase().includes(search.toLowerCase()) || post.link.toLowerCase().includes(search.toLowerCase()) || post.createdAt.toLowerCase().includes(search.toLowerCase()) || post.published.toString().toLowerCase().includes(search.toLowerCase())).map((post, i) => (
                       <PostCard post={post} key={i} />
                     ))
                   )
