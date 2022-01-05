@@ -33,7 +33,7 @@ h2 {
 }
 
 .bg-abajo {
-  background-color: rgb(204, 226, 255);
+  background-color: rgba(204, 226, 255, 0.719);
   width: 100%;
   padding: 2rem;
 }

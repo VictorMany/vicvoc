@@ -94,7 +94,7 @@ export default function Layout({ children, title, description, home }) {
                                 </div>
                                 <div className='ms-auto mt-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center'>
                                     <div className="row d-flex align-content-end justify-content-md-end justify-content-center">
-                                        <label type="text" className="w-100 mb-2 mt-2">{date.toString()}</label>
+                                        <label type="text" className="w-100 mb-2 mt-2 text-primary fw-bold">{date.toString()}</label>
                                         <input type="text" className="w-100" placeholder="Search" value={search} onInput={onChange} />
                                     </div>
                                 </div>
