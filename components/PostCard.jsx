@@ -73,7 +73,7 @@ export default function PostCard({ post, buttons = true, searching = '' }) {
                             <hr />
                             {
                                 (!post.published && buttons ? (
-                                    <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '30%' }} onClick={() => publishPost(post._id)}>
+                                    <button type="button" className='btn btn-outline-info btn-sm mb-2' style={{ width: '50%' }} onClick={() => publishPost(post._id)}>
                                         {publishing ? 'Publishing' : 'Publish'}
                                     </button>
                                 ) : null)
@@ -81,7 +81,7 @@ export default function PostCard({ post, buttons = true, searching = '' }) {
                             <br />
                             {
                                 (buttons ? (
-                                    <button className='btn btn-primary btn-sm' style={{ width: '30%' }} onClick={() => deletePost(post['_id'])}>
+                                    <button className='btn btn-primary btn-sm' style={{ width: '50%' }} onClick={() => deletePost(post['_id'])}>
                                         {deleting ? 'Deleting' : 'Delete'
                                         }
                                     </button>

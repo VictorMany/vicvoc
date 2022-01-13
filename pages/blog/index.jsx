@@ -44,7 +44,7 @@ export default function Index({ posts }) {
         <main>
           <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' style={{ marginTop: '-6rem', marginBottom: '2rem' }}>
             <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
-              <label type="text" className="w-100 mb-2 mt-2 fw-bold text-primary">{date.toString()}</label>
+              <label type="text" className="w-100 mb-2 mt-2 fw-bold text-primary text-nowrap">{date.toString()}</label>
               <input type="text" className="w-100" placeholder="Search" value={search} onInput={onChange} />
             </div>
           </div>
