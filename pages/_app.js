@@ -1,4 +1,4 @@
-import 'bootswatch/dist/journal/bootstrap.min.css'
+import 'bootswatch/dist/morph/bootstrap.min.css'
 import '../styles/globals.css'
 
 

@@ -7,8 +7,8 @@ import React, { useEffect, useState } from 'react'
 
 export default function Index({ posts }) {
   const [search, setSearch] = useState('');
-  const [date, setDate] = useState('');
-  
+  const [date, setDate] = useState(new Date().toLocaleString());
+
   let today;
   function cambiar() {
     try {
@@ -43,8 +43,8 @@ export default function Index({ posts }) {
         </Head>
         <main>
           <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' style={{ marginTop: '-6rem', marginBottom: '2rem' }}>
-            <div className="row d-flex align-content-end justify-content-md-end justify-content-center">
-              <label type="text" className="w-100 mb-2 mt-2 text-primary fw-bold">{date.toString()}</label>
+            <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
+              <label type="text" className="w-100 mb-2 mt-2 fw-bold text-primary">{date.toString()}</label>
               <input type="text" className="w-100" placeholder="Search" value={search} onInput={onChange} />
             </div>
           </div>

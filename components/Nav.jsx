@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <nav className='p-2 d-flex justify-content-around' style={{width: '100%'}}>
             <Link href="/">
-                <a>Home</a>
+                <a >Home</a>
             </Link>
 
             <Link href="/blog">

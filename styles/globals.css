@@ -7,7 +7,7 @@ body {
 }
 
 a {
-  color: rgb(10, 77, 153) !important;
+  color: #D5DCE7 !important;
   text-decoration: none !important;
 }
 
@@ -16,24 +16,23 @@ a {
 }
 
 h1 {
-  color: rgb(196, 44, 18);
+  color: rgb(0, 23, 128);
 }
 
 h2 {
-  color: peru;
-}
-
-.title {
-  color: red !important;
-  font-size: 14px !important;
+  color: rgb(0, 66, 128);
 }
 
 .bg-navbar {
-  background-color: rgb(154, 198, 255);
+  background-color: rgb(53, 53, 53);
 }
 
 .bg-abajo {
-  background-color: rgba(204, 226, 255, 0.719);
+  background-color: rgba(73, 69, 69, 0.281);
   width: 100%;
   padding: 2rem;
+}
+
+.a {
+  color: '#D5DCE7'
 }

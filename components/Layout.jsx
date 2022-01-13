@@ -39,17 +39,17 @@ export default function Layout({ children, title, description, home }) {
                     <div className="col d-flex justify-content-center justify-content-md-start col-12 col-md-6">
                         <Link href='https://www.linkedin.com/in/victor-manuel-velazquez-fuentes-bab088156/'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/48/1866D0/linkedin.png" height={40} width={40} className="me-3" />
+                                <img src="https://img.icons8.com/ios-filled/48/D5DCE7/linkedin.png" height={40} width={40} className="me-3" />
                             </a>
                         </Link>
                         <Link href='https://github.com/VictorMany'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/50/1866D0/github.png" height={40} width={40} className="me-3" />
+                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/github.png" height={40} width={40} className="me-3" />
                             </a>
                         </Link>
                         <Link href='https://portfolio-vic-projects.vercel.app'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/50/1866D0/copy-link.png" height={40} width={40} />
+                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/copy-link.png" height={40} width={40} />
                             </a>
                         </Link>
                     </div>
@@ -71,7 +71,7 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 text-primary col-12 col-md-6 mb-3">
+                                <div className="p-2 col-12 col-md-6 mb-5" style={{color: 'rgb(0, 66, 128)'}}>
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards. Each card contains the following structure</p>
@@ -96,7 +96,7 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 text-primary col-12 col-md-6 mb-3">
+                                <div className="p-2 col-12 col-md-6 mb-5" style={{color: 'rgb(0, 66, 128)'}}>
                                     <h2 className={`${utilStyles.heading2Xl}`}>{title}</h2>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards</p>

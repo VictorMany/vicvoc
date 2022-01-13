@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 function Home({ posts }) {
   const [search, setSearch] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date().toLocaleString());
 
   let today;
   function cambiar() {

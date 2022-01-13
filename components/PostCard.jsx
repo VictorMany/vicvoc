@@ -65,7 +65,7 @@ export default function PostCard({ post, buttons = true, searching = '' }) {
                     <div className="card p-3 h-100">
                         <h2>{post.title}</h2>
                         <p>{post.content}</p>
-                        <LinkPreview url={post.link} descriptionLength={100} primaryTextColor='gray' className='fw-lighter fs-6 overflow-hidden' height='100%' width='100%' imageHeight='150px' fallbackImageSrc='/img/nf.jpeg' fallback={(<a className='card p-3 border border-1 h-100 fw-bold text-secondary ' href={post.link} target="_blank" rel="noreferrer">{post.link}
+                        <LinkPreview url={post.link} descriptionLength={100} backgroundColor='#FFFFFF9A' primaryTextColor='gray' className='fw-lighter fs-6 overflow-hidden' height='100%' width='100%' imageHeight='150px' fallbackImageSrc='/img/nf.jpeg' fallback={(<a className='card p-3 border border-1 h-100 fw-bold text-secondary ' href={post.link} target="_blank" rel="noreferrer">{post.link}
                             {post.link.includes('youtube') ? (<div className='d-flex justify-content-center'> <Image src='/img/yt.png' width='266.6666px' height='150px'></Image></div>) : null}</a>)} />
                         <br />
                         <div className='mt-auto'>
