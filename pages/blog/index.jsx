@@ -42,12 +42,25 @@ export default function Index({ posts }) {
           <title>Published</title>
         </Head>
         <main>
-          <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' style={{ marginTop: '-6rem', marginBottom: '2rem' }}>
-            <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
-              <label type="text" className="w-100 mb-2 mt-2 fw-bold text-primary text-nowrap">{date.toString()}</label>
-              <input type="text" className="w-100" placeholder="Search" value={search} onInput={onChange} />
+
+
+          <div className="d-flex align-content-start flex-wrap mb-4">
+            <div className='d-flex align-content-end flex-wrap'>
+              <Button title='react' qty='10' />
+              <Button title='angular' qty='10' />
+              <Button title='youtube' qty='10' />
+              <Button title='frontend' qty='10' />
+              <Button title='course' qty='10' />
+            </div>
+            <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' >
+              <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
+                <label type="text" className="w-100 mb-2 fw-bold text-primary text-nowrap" >{date.toString()}</label>
+                <input type="text" className="w-100 search" placeholder="Search" value={search} onInput={onChange} />
+              </div>
             </div>
           </div>
+
+
 
           <div className={styles.container}>
             {posts.length === 0 ? (
@@ -92,4 +105,16 @@ export async function getServerSideProps(ctx) {
       posts: data['message'],
     },
   };
+}
+
+const Button = ({ title, qty }) => {
+  return (
+    <button style={{ boxShadow: 'none' }} type="button" class="btn btn-primary position-relative btn-sm bg-primary text-white me-4">
+      {title}
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {qty}
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </button>
+  )
 }

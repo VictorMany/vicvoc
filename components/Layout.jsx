@@ -71,7 +71,7 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 col-12 col-md-6 mb-5" style={{color: 'rgb(0, 66, 128)'}}>
+                                <div className="p-2 col-12 col-md-6 mb-5 subtitle">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards. Each card contains the following structure</p>
@@ -96,7 +96,7 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 col-12 col-md-6 mb-5" style={{color: 'rgb(0, 66, 128)'}}>
+                                <div className="p-2 col-12 col-md-6 mb-5 subtitle" >
                                     <h2 className={`${utilStyles.heading2Xl}`}>{title}</h2>
                                     <p className="ps-1">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes in cards</p>

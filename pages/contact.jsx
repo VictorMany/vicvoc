@@ -37,10 +37,9 @@ export default function contact() {
 
                         </div>
                         <div className="mt-auto">
-                            <hr />
 
                             <div className='d-flex justify-content-center'>
-                                <a href={`https://www.linkedin.com/in/victor-manuel-velazquez-fuentes-bab088156/`} target="_blank" rel="noreferrer"><button className="btn btn-primary btn-sm">
+                                <a href={`https://www.linkedin.com/in/victor-manuel-velazquez-fuentes-bab088156/`} target="_blank" rel="noreferrer"><button className="btn bg-primary btn-sm text-white btn-sm">
                                     See my profile</button></a>
                             </div>
                         </div>
@@ -64,9 +63,9 @@ export default function contact() {
 
                         </div>
                         <div className="mt-auto">
-                            <hr />
+                           
                             <div className='d-flex justify-content-center'>
-                                <a href={`https://github.com/VictorMany`} target="_blank" rel="noreferrer"><button className="btn btn-primary btn-sm">
+                                <a href={`https://github.com/VictorMany`} target="_blank" rel="noreferrer"><button className="btn bg-primary btn-sm text-white">
                                     See my profile</button></a>
                             </div>
                         </div>

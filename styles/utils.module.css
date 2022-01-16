@@ -27,7 +27,7 @@
 
 .borderCircle {
     border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: rgba(255, 255, 255, 0.938);
     width: 200px;
     height: 200px;
 }
@@ -57,5 +57,9 @@
 .textCard {
     font-size: 12px;
     color: rgb(165, 47, 47) !important;
-    
+
+}
+
+.subtitle {
+    color: rgb(255, 255, 255)
 }
