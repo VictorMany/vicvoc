@@ -109,11 +109,11 @@ export async function getServerSideProps(ctx) {
 
 const Button = ({ title, qty }) => {
   return (
-    <button style={{ boxShadow: 'none' }} type="button" class="btn btn-primary position-relative btn-sm bg-primary text-white me-4">
+    <button style={{ boxShadow: 'none' }} type="button" className="btn btn-primary position-relative btn-sm bg-primary text-white me-4">
       {title}
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         {qty}
-        <span class="visually-hidden">unread messages</span>
+        <span className="visually-hidden">unread messages</span>
       </span>
     </button>
   )
