@@ -45,12 +45,14 @@ export default function Index({ posts }) {
 
 
           <div className="d-flex align-content-start flex-wrap mb-4">
-            <div className='d-flex align-content-end flex-wrap'>
-              <Button title='react' qty='10' />
-              <Button title='angular' qty='10' />
-              <Button title='youtube' qty='10' />
-              <Button title='frontend' qty='10' />
-              <Button title='course' qty='10' />
+            <div className='d-flex align-content-end flex-wrap mb-2'>
+              <Button title='react' setSearchBy={() => { setSearch('react') }} />
+              <Button title='angular' setSearchBy={() => { setSearch('angular') }} />
+              <Button title='vue' setSearchBy={() => { setSearch('vue') }} />
+              <Button title='youtube' setSearchBy={() => { setSearch('youtube') }} />
+              <Button title='frontend' setSearchBy={() => { setSearch('frontend') }} />
+              <Button title='course' setSearchBy={() => { setSearch('course') }} />
+              <Button title='aws' setSearchBy={() => { setSearch('aws') }} />
             </div>
             <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' >
               <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
@@ -107,14 +109,10 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-const Button = ({ title, qty }) => {
+const Button = ({ title, setSearchBy }) => {
   return (
-    <button style={{ boxShadow: 'none' }} type="button" className="btn btn-primary position-relative btn-sm bg-primary text-white me-4 m-2">
+    <button style={{ boxShadow: 'none' }} onClick={() => setSearchBy()} type="button" className="btn btn-primary position-relative btn-sm bg-primary text-white me-4 m-2">
       {title}
-      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        {qty}
-        <span className="visually-hidden">unread messages</span>
-      </span>
     </button>
   )
 }

@@ -22,6 +22,8 @@ h1 {
 
 .bg-card {
   background-color: rgb(35, 45, 77);
+  box-shadow: none;
+  margin: -0.2rem;
 }
 
 h2 {
@@ -53,4 +55,13 @@ h2 {
   position: fixed;
   z-index: 1000;
   top: 0;
+}
+
+
+@media (max-width: 600px) {
+  .bg-card {
+    background-color: rgb(35, 45, 77);
+    box-shadow: none;
+    margin: -0.5rem;
+  }
 }
