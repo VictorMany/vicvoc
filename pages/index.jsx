@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import PostCard from '../components/PostCard';
 import styles from '../styles/Home.module.css';
 import React, { useEffect, useState } from 'react'
+import Masonry from 'react-masonry-css'
+
 
 
 function Home({ posts }) {
@@ -34,12 +36,20 @@ function Home({ posts }) {
   };
 
 
+const breakpointColumnsObj = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1
+};
+
   return (
     <Layout home={true} setSearch>
       <div>
         <Head>
           <title>Vicvoc</title>
         </Head>
+
         <main>
           <div className="d-flex align-content-start flex-wrap mb-4">
             <div className='d-flex align-content-end flex-wrap mb-2'>
@@ -63,7 +73,10 @@ function Home({ posts }) {
             {posts.length === 0 ? (
               <h2>No added posts</h2>
             ) : (
-              <div className='row'>
+              <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column">
                 {search == '' ?
                   (
                     posts.map((post, i) => (
@@ -76,12 +89,13 @@ function Home({ posts }) {
                     ))
                   )
                 }
-              </div>
+
+              </Masonry>
             )}
           </div>
         </main>
       </div>
-    </Layout>
+    </Layout >
 
   );
 }

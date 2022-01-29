@@ -58,7 +58,7 @@ export default function PostCard({ post, buttons = true, searching = '' }) {
 
     return (
 
-        <div className='col-12 col-md-4 col-lg-3 p-2' data-aos="zoom-in">
+        <div className='col-12 p-2' data-aos="zoom-in">
             {
                 
                     post.published ? (<div className="card p-3 h-100 bg-card">
