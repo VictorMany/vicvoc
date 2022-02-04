@@ -36,12 +36,12 @@ function Home({ posts }) {
   };
 
 
-const breakpointColumnsObj = {
-  default: 4,
-  1100: 3,
-  700: 2,
-  500: 1
-};
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1
+  };
 
   return (
     <Layout home={true} setSearch>
@@ -60,6 +60,7 @@ const breakpointColumnsObj = {
               <Button title='frontend' setSearchBy={() => { setSearch('frontend') }} />
               <Button title='course' setSearchBy={() => { setSearch('course') }} />
               <Button title='aws' setSearchBy={() => { setSearch('aws') }} />
+              <Button title='javascript' setSearchBy={() => { setSearch('javascript') }} />
             </div>
             <div className='ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center' >
               <div className="row d-flex align-content-end justify-content-md-end justify-content-center" style={{ width: '500px' }}>
@@ -69,7 +70,7 @@ const breakpointColumnsObj = {
             </div>
           </div>
 
-          <div className={styles.container}>
+          <div>
             {posts.length === 0 ? (
               <h2>No added posts</h2>
             ) : (

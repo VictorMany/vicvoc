@@ -74,11 +74,11 @@ export default function Layout({ children, title, description, home }) {
                                 <div className="p-2 col-12 col-md-6 subtitle">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
                                     <p className="ps-1">Productivity page</p>
-                                    <p className="ps-1 fw-lighter">Sample CRUD notes in cards. Each card contains the following structure</p>
+                                    <p className="ps-1 fw-lighter">Sample CRUD notes built with NEXT JS and MongoDB. Each card contains the following structure</p>
                                     <ul className="fw-lighter">
                                         <li>Title</li>
                                         <li>Content or description</li>
-                                        <li>Link (Optional)</li>
+                                        <li>Link preview</li>
                                         <li>Created date (Auto)</li>
                                     </ul>
                                 </div>
@@ -99,7 +99,7 @@ export default function Layout({ children, title, description, home }) {
                                 <div className="p-2 col-12 col-md-6 subtitle" >
                                     <h2 className={`${utilStyles.heading2Xl}`}>{title}</h2>
                                     <p className="ps-1">Productivity page</p>
-                                    <p className="ps-1 fw-lighter">Sample CRUD notes in cards</p>
+                                    <p className="ps-1 fw-lighter">Sample CRUD notes built in NEXT JS and MongoDB</p>
 
                                 </div>
 

@@ -1,9 +1,8 @@
 .container {
-    max-width: 90%;
-    padding: 0 1rem;
+    max-width: 95%;
+    padding: 0 0.3rem;
     margin: 0rem auto 0rem;
     height: 100%;
-    padding: 1rem;
 }
 
 .header {

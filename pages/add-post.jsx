@@ -105,7 +105,7 @@ export default function AddPost() {
                             </div>
                             <div className='mx-auto'>
 
-                                <button className='btn btn-primary btn-sm mt-4' style={{ width: '100px' }} type="submit">Add post</button>
+                                <button className='btn bg-primary btn-sm mt-2 shadow-none text-white' style={{ width: '100px' }} type="submit">Add post</button>
                             </div>
                         </div>
 
