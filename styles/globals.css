@@ -44,7 +44,7 @@ h2 {
     rgba(0, 212, 255, 1) 100%
   );
   width: 100%;
-  padding-left: 1.5rem;
+  padding: 1.5rem;
   border-radius: 0rem 0rem 15rem 1rem;
 }
 
@@ -132,4 +132,12 @@ h2 {
 .btn {
   border-radius: 0.5rem !important;
   margin: 0%;
+}
+::-webkit-scrollbar {
+  margin-bottom: 0rem; /* remove default margin */
+  scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
+  overflow-y: scroll;
+  width: 0px;
+  background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
 }
