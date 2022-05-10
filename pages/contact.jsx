@@ -14,7 +14,7 @@ export default function contact() {
                 </div>
             </div>
             <div className="row ps-3 pe-3 d-flex justify-content-between" style={{ fontSize: 12 }}>
-                <div className="p-2 card mb-1 percent98">
+                <div className="p-2 card mb-1 percent98 col">
                     <div style={{ backgroundColor: '#D2E2EA', padding: 10 }}>
                         <Image src="/img/in.png" width={175} height={43.82} alt="linkedin" ></Image>
                     </div>
@@ -40,7 +40,7 @@ export default function contact() {
                     </div>
                 </div>
 
-                <div className="p-2 card mb-1 percent98">
+                <div className="p-2 card mb-1 percent98 col">
                     <div className='w-100' style={{ backgroundColor: '#D2E2EA', padding: 10 }}>
                         <Image src="/img/git.png" width={131} height={43.82} alt="github" ></Image>
                     </div>

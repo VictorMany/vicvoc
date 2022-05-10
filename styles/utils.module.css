@@ -4,6 +4,7 @@
     font-weight: 800;
     letter-spacing: -0.05rem;
     margin: 1rem 0;
+    color: white;
 }
 
 .headingXl {
@@ -12,6 +13,7 @@
     font-weight: 800;
     letter-spacing: -0.05rem;
     margin: 1rem 0;
+    color: wheat;
 }
 
 .headingLg {
@@ -27,7 +29,7 @@
 
 .borderCircle {
     border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 0.938);
+    background-color: rgba(0, 0, 0, 0.414);
     width: 200px;
     height: 200px;
 }

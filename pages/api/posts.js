@@ -18,6 +18,10 @@ export default async function handler(req, res) {
             return updatePost(req, res);
         }
 
+        case 'ADD-BADGES': {
+            return addBadgesImg(req, res);
+        }
+
         case 'DELETE': {
             return deletePost(req, res);
         }
@@ -36,7 +40,8 @@ async function getPosts(req, res) {
             .collection('courses')
             .find({})
             .sort({
-                published: -1
+                published: -1,
+                createdAt: -1
             })
             .toArray();
         // return the posts
@@ -105,6 +110,33 @@ async function updatePost(req, res) {
         });
     }
 }
+
+async function addBadgesImg(req, res) {
+    try {
+        console.log("THIS IS THE JSON", JSON.parse(req.body))
+        // connect to the database
+        let {
+            db
+        } = await connectToDatabase();
+
+        // update the published status of the post
+        await db.courses.update({ "_id": JSON.parse(req.body.id) }, { $set: { "imgs": JSON.parse(req.body.imgs) } });
+
+        // return a message
+        return res.json({
+            message: 'Badges added successfully',
+            success: true,
+        });
+    } catch (error) {
+
+        // return an error
+        return res.json({
+            message: new Error(error).message + req,
+            success: false,
+        });
+    }
+}
+
 
 async function deletePost(req, res) {
     try {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Layout from '../components/Layout';
+import { useRouter } from 'next/router'
 
 
 export default function AddPost() {
@@ -8,6 +9,7 @@ export default function AddPost() {
     const [link, setLink] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const router = useRouter()
 
     const handlePost = async (e) => {
         e.preventDefault();
@@ -41,6 +43,8 @@ export default function AddPost() {
             setTitle('');
             setLink('');
             setContent('');
+            
+            router.push('/')
             // set the message
             return setMessage(data.message);
         } else {
