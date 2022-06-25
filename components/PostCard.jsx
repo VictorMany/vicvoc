@@ -55,6 +55,7 @@ export default function PostCard({ post, setBadges, badges, index }) {
               post={post}
               setViewList={setViewList}
               viewList={viewList}
+              setBadges={setBadges}
               index={index}
             />
             <div className="created-at-css col">
@@ -155,7 +156,7 @@ const removeBadgeImg = async (imgs, img, id, setBadges, i) => {
   const index = arrayImgs.indexOf(img);
   arrayImgs.splice(index, img.length); // 2nd parameter means remove one item only
 
-  await setBadges({ badges: arrayImgs.join(), index: i });
+  setBadges({ badges: arrayImgs.join(), index: i });
   let post = {
     imgs: arrayImgs.join(),
     id: id,
