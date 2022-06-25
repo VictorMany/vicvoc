@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Image from "next/image";
 
-export default function PostCard({ post, buttons = true, searching = "" }) {
-  const [publishing, setPublishing] = useState(false);
-  const [deleting, setDeleting] = useState(false);
+export default function PostCard({ post, setBadges, badges, index }) {
   const [images, setImages] = useState([
     "/img-badges/css.svg",
     "/img-badges/free.svg",
@@ -21,64 +19,8 @@ export default function PostCard({ post, buttons = true, searching = "" }) {
 
   const router = useRouter();
 
-  // Publish post
-  const publishPost = async (postId) => {
-    // change publishing state
-    setPublishing(true);
-    try {
-      // Update post
-      await fetch("/api/posts", {
-        method: "PUT",
-        body: postId,
-      });
-
-      // reset the publishing state
-      setPublishing(false);
-    } catch (error) {
-      // Stop publishing state
-      return setPublishing(false);
-    }
-  };
-
-  // Publish post
-  const addBadgeImg = async (img, post) => {
-    // change publishing state
-    console.log(img, post);
-
-    try {
-      // Update post
-      await fetch("/api/posts", {
-        method: "ADD-BADGES",
-        body: JSON.stringify({imgs: img, id: post}),
-      });
-    } catch (error) {}
-  };
-
-  // Delete post
-  const deletePost = async (postId) => {
-    //change deleting state
-    setDeleting(true);
-
-    try {
-      // Delete post
-      await fetch("/api/posts", {
-        method: "DELETE",
-        body: postId,
-      });
-
-      // reset the deleting state
-      setDeleting(false);
-
-      // reload the page
-      return router.push(router.asPath);
-    } catch (error) {
-      // stop deleting state
-      return setDeleting(false);
-    }
-  };
-
   return (
-    <div className="col-12 p-1" data-aos="zoom-in">
+    <div className="col-12 p-1" style={{ width: "100%" }}>
       {post.published ? (
         <div className="card p-2 h-100 bg-card mt-1">
           <h4>{post.title}</h4>
@@ -88,10 +30,6 @@ export default function PostCard({ post, buttons = true, searching = "" }) {
             descriptionLength={100}
             primaryTextColor="gray"
             className="fw-lighter fs-6 overflow-hidden"
-            height="100%"
-            width="100%"
-            imageHeight="150px"
-            fallbackImageSrc="/img/nf.jpeg"
             fallback={
               <a
                 className="card p-3 border border-1 h-100 text-dark Secondary"
@@ -100,46 +38,25 @@ export default function PostCard({ post, buttons = true, searching = "" }) {
                 rel="noreferrer"
               >
                 {post.link}
-                {post.link.includes("youtube") ? (
-                  <div className="d-flex justify-content-center">
-                    {" "}
-                    <Image
-                      src="/img/yt.png"
-                      width="266.6666px"
-                      alt="youtube"
-                      height="150px"
-                    ></Image>
-                  </div>
-                ) : null}
               </a>
             }
           />
           <br />
           <div className="row">
-            <div className="css-badges col">
-              {viewList
-                ? images.map((img, i) => (
-                    <Image
-                      onClick={() => addBadgeImg(img, post._id)}
-                      key={i}
-                      src={img}
-                      height={20}
-                      width={20}
-                      alt={i}
-                    />
-                  ))
-                : ""}{" "}
-              <Image
-                priority
-                src={"/img-badges/plus.png"}
-                height={20}
-                width={20}
-                alt={"more"}
-                onClick={() => {
-                  setViewList(!viewList);
-                }}
-              />
-            </div>
+            <BadgesList
+              viewList={viewList}
+              images={images}
+              post={post}
+              setBadges={setBadges}
+              badges={badges}
+              index={index}
+            />
+            <Badges
+              post={post}
+              setViewList={setViewList}
+              viewList={viewList}
+              index={index}
+            />
             <div className="created-at-css col">
               <small>{new Date(post.createdAt).toLocaleDateString()}</small>
             </div>
@@ -149,3 +66,106 @@ export default function PostCard({ post, buttons = true, searching = "" }) {
     </div>
   );
 }
+
+const BadgesList = ({ viewList, images, post, setBadges, index }) => {
+  return (
+    <div className="css-badges mb-2">
+      {viewList
+        ? images.map((img, i) => (
+            <Image
+              onClick={() => {
+                addBadgeImg(post.imgs, img, post._id, setBadges, index);
+              }}
+              key={i}
+              src={img}
+              height={27}
+              width={27}
+              alt={i}
+            />
+          ))
+        : ""}{" "}
+    </div>
+  );
+};
+
+const Badges = ({ post, setViewList, viewList, setBadges, index }) => {
+  return (
+    <div className="css-badges col-12">
+      {post.imgs != undefined && post.imgs != "" && post.imgs.split().length > 0
+        ? post.imgs
+            .split(",")
+            .map((img, i) =>
+              (img != "" && img != undefined && img) != null ? (
+                <Image
+                  onClick={() =>
+                    removeBadgeImg(post.imgs, img, post._id, setBadges, index)
+                  }
+                  key={i}
+                  src={img}
+                  height={27}
+                  width={27}
+                  alt={i}
+                />
+              ) : (
+                ""
+              )
+            )
+        : ""}{" "}
+      <Image
+        priority
+        src={"/img-badges/plus.png"}
+        height={27}
+        width={27}
+        alt={"more"}
+        onClick={() => {
+          setViewList(!viewList);
+        }}
+      />
+    </div>
+  );
+};
+// Publish post
+const addBadgeImg = async (imgs, img, id, setBadges, index) => {
+  let arrayImg = "";
+  if (imgs == undefined) {
+    arrayImg = img;
+  } else if (imgs != "") {
+    if (!imgs.includes(img)) arrayImg = imgs + "," + img;
+  }
+  await setBadges({ badges: arrayImg, index: index });
+
+  let post = {
+    imgs: arrayImg,
+    id: id,
+  };
+
+  try {
+    // Update post
+    await fetch("/api/posts", {
+      method: "PATCH",
+      body: JSON.stringify(post),
+    }).then((response) => {});
+  } catch (error) {}
+};
+
+const removeBadgeImg = async (imgs, img, id, setBadges, i) => {
+  // change publishing state
+  const arrayImgs = imgs.split(",");
+
+  const index = arrayImgs.indexOf(img);
+  arrayImgs.splice(index, img.length); // 2nd parameter means remove one item only
+
+  await setBadges({ badges: arrayImgs.join(), index: i });
+  let post = {
+    imgs: arrayImgs.join(),
+    id: id,
+  };
+
+  try {
+    // Update post
+    await fetch("/api/posts", {
+      method: "PATCH",
+      body: JSON.stringify(post),
+    }).then((response) => {});
+  } catch (error) {}
+};

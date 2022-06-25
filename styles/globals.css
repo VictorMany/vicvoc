@@ -45,7 +45,7 @@ h2 {
   );
   width: 100%;
   padding: 1.5rem;
-  border-radius: 0rem 0rem 15rem 1rem;
+  border-radius: 0rem 0rem 15rem 0rem;
 }
 
 .a {
@@ -117,6 +117,7 @@ h2 {
   margin-right: auto;
   font-size: 11px !important;
   width: 100%;
+  margin-top: -0.5rem;
 }
 .fw-lighter {
   color: white;

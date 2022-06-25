@@ -7,37 +7,31 @@ import Masonry from "react-masonry-css";
 
 function Home({ posts }) {
   const [search, setSearch] = useState("");
-  const [date, setDate] = useState(new Date().toLocaleString());
-
-  let today;
-  function cambiar() {
-    try {
-      today = new Date().toLocaleString();
-      setDate(today);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  setInterval(cambiar, 1000);
-
-  today = new Date().toLocaleString();
+  const [badges, setBadges] = useState({});
+  const [buttonList, setButtonList] = useState([
+    "react",
+    "angular",
+    "vue",
+    "youtube",
+    "frontend",
+    "course",
+    "aws",
+    "javascript",
+  ]);
 
   const onChange = (event) => {
     try {
       setSearch(event.target.value);
-      setInfo(event.target.value);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
+  useEffect(() => {
+    if (badges.badges != "" && badges.badges != undefined) {
+      posts[badges.index].imgs = badges.badges;
+    }
+  }, [badges, posts]);
 
   return (
     <Layout home={true} setSearch>
@@ -47,56 +41,9 @@ function Home({ posts }) {
         </Head>
 
         <main>
-          <div className="d-flex align-content-start flex-wrap mb-2">
+          <div className="d-flex align-content-start flex-wrap mb-2 mt-2">
             <div className="d-flex align-content-end flex-wrap mb-auto mt-2">
-              <Button
-                title="react"
-                setSearchBy={() => {
-                  setSearch("react");
-                }}
-              />
-              <Button
-                title="angular"
-                setSearchBy={() => {
-                  setSearch("angular");
-                }}
-              />
-              <Button
-                title="vue"
-                setSearchBy={() => {
-                  setSearch("vue");
-                }}
-              />
-              <Button
-                title="youtube"
-                setSearchBy={() => {
-                  setSearch("youtube");
-                }}
-              />
-              <Button
-                title="frontend"
-                setSearchBy={() => {
-                  setSearch("frontend");
-                }}
-              />
-              <Button
-                title="course"
-                setSearchBy={() => {
-                  setSearch("course");
-                }}
-              />
-              <Button
-                title="aws"
-                setSearchBy={() => {
-                  setSearch("aws");
-                }}
-              />
-              <Button
-                title="javascript"
-                setSearchBy={() => {
-                  setSearch("javascript");
-                }}
-              />
+              <ButtonList buttonList={buttonList} setSearch={setSearch} />
             </div>
             <div className="ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center">
               <div
@@ -107,12 +54,6 @@ function Home({ posts }) {
                   paddingRight: "1rem",
                 }}
               >
-                <label
-                  type="text"
-                  className="w-100 mb-2 mt-2 fw-bold text-primary text-nowrap"
-                >
-                  {date.toString()}
-                </label>
                 <input
                   type="text"
                   className="w-100 search"
@@ -124,40 +65,46 @@ function Home({ posts }) {
             </div>
           </div>
 
-          <div>
-            {posts.length === 0 ? (
-              <h2>No added posts</h2>
-            ) : (
-              <Masonry
-                breakpointCols={breakpointColumnsObj}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column"
-              >
-                {search == ""
-                  ? posts.map((post, i) => <PostCard post={post} key={i} />)
-                  : posts
-                      .filter(
-                        (post) =>
-                          post.title
-                            .toLowerCase()
-                            .includes(search.toLowerCase()) ||
-                          post.content
-                            .toLowerCase()
-                            .includes(search.toLowerCase()) ||
-                          post.link
-                            .toLowerCase()
-                            .includes(search.toLowerCase()) ||
-                          post.createdAt
-                            .toLowerCase()
-                            .includes(search.toLowerCase()) ||
-                          post.published
-                            .toString()
-                            .toLowerCase()
-                            .includes(search.toLowerCase())
-                      )
-                      .map((post, i) => <PostCard post={post} key={i} />)}
-              </Masonry>
-            )}
+          <div className="d-flex justify-content-center">
+            <div style={{ maxWidth: "580px" }}>
+              {posts.length === 0 ? (
+                <h2>No added posts</h2>
+              ) : (
+                <div>
+                  {search == ""
+                    ? posts.map((post, i) => (
+                        <PostCard
+                          post={post}
+                          index={i}
+                          key={i}
+                          setBadges={setBadges}
+                          badges={post.imgs ? post.imgs : undefined}
+                        />
+                      ))
+                    : posts
+                        .filter(
+                          (post) =>
+                            post.title
+                              .toLowerCase()
+                              .includes(search.toLowerCase()) ||
+                            post.content
+                              .toLowerCase()
+                              .includes(search.toLowerCase()) ||
+                            post.link
+                              .toLowerCase()
+                              .includes(search.toLowerCase()) ||
+                            post.createdAt
+                              .toLowerCase()
+                              .includes(search.toLowerCase()) ||
+                            post.published
+                              .toString()
+                              .toLowerCase()
+                              .includes(search.toLowerCase())
+                        )
+                        .map((post, i) => <PostCard post={post} key={i} />)}
+                </div>
+              )}
+            </div>
           </div>
         </main>
       </div>
@@ -190,11 +137,26 @@ const Button = ({ title, setSearchBy }) => {
       style={{ boxShadow: "none" }}
       onClick={() => setSearchBy()}
       type="button"
-      className="btn btn-primary position-relative btn-sm bg-primary text-white me-4 m-2"
+      className="btn btn-primary position-relative btn-sm bg-primary text-white me-2 m-1"
     >
       {title}
     </button>
   );
+};
+
+const ButtonList = ({ buttonList, setSearch }) => {
+  return buttonList.map((button, i) => {
+    return (
+      // eslint-disable-next-line react/jsx-key
+      <Button
+        title={button}
+        key={i}
+        setSearchBy={() => {
+          setSearch(button);
+        }}
+      />
+    );
+  });
 };
 
 export default Home;

@@ -70,15 +70,19 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 col-12 col-md-6 subtitle">
+                                <div className="p-2 col-12 col-md-8 subtitle">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
-                                    <p className="ps-1 fw-lighter">Productivity page</p>
-                                    <p className="ps-1 fw-lighter">Sample CRUD notes built with NEXT JS and MongoDB. Each card contains the following structure</p>
+                                    <p className="ps-1 fw-lighter">There are many courses available for you to learn anything you want. 
+                                        Find the perfect course for you, start learning and improve your skills. Courses can help you find a better job and improve your career.
+                                    </p>
+                                    <p className="ps-1 fw-lighter">
+                                        Some popular courses include:
+                                    </p>
                                     <ul className="fw-lighter ">
-                                        <li>Title</li>
-                                        <li>Content or description</li>
-                                        <li>Link preview</li>
-                                        <li>Created date (Auto)</li>
+                                        <li>Web Development</li>
+                                        <li>Data Science</li>
+                                        <li>Machine Learning</li>
+                                        <li>Artificial Intelligence</li>
                                     </ul>
                                 </div>
 

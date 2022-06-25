@@ -17,8 +17,8 @@ export default async function handler(req, res) {
         case 'PUT': {
             return updatePost(req, res);
         }
-
-        case 'ADD-BADGES': {
+        
+        case 'PATCH': {
             return addBadgesImg(req, res);
         }
 
@@ -59,6 +59,7 @@ async function getPosts(req, res) {
 }
 
 async function addPost(req, res) {
+    console.log(JSON.parse(req.body))
     try {
         // connect to the database
         let {
@@ -112,16 +113,22 @@ async function updatePost(req, res) {
 }
 
 async function addBadgesImg(req, res) {
+    let payload = JSON.parse(req.body)
+    console.log(payload.id)
+
     try {
-        console.log("THIS IS THE JSON", JSON.parse(req.body))
-        // connect to the database
         let {
             db
         } = await connectToDatabase();
 
         // update the published status of the post
-        await db.courses.update({ "_id": JSON.parse(req.body.id) }, { $set: { "imgs": JSON.parse(req.body.imgs) } });
-
+        await db.collection('courses').updateOne({
+            _id: new ObjectId(payload.id),
+        }, {
+            $set: {
+                "imgs": payload.imgs
+            }
+        });
         // return a message
         return res.json({
             message: 'Badges added successfully',
