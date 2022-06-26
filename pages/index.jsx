@@ -29,10 +29,12 @@ function Home({ posts }) {
   };
 
   useEffect(() => {
+    console.log(height);
     if (badges.badges != undefined) {
       posts[badges.index].imgs = badges.badges;
     }
     if (height.height == 0 && height.height != undefined) {
+      console.log(height.index);
       posts[height.index].height = height.height;
     }
   }, [badges, height, posts]);
@@ -127,9 +129,9 @@ function Home({ posts }) {
 }
 
 /**
- * 
- * @param {*} ctx 
- * @returns 
+ *
+ * @param {*} ctx
+ * @returns
  */
 export async function getServerSideProps(ctx) {
   // get the current environment
