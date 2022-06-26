@@ -70,7 +70,7 @@ function Home({ posts }) {
           </div>
 
           <div className="d-flex justify-content-center">
-            <div style={{ maxWidth: "580px" }}>
+            <div style={{ maxWidth: "580px", width: '100%'}}>
               {posts.length === 0 ? (
                 <h2>No added posts</h2>
               ) : (
