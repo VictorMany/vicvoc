@@ -8,6 +8,7 @@ import Masonry from "react-masonry-css";
 function Home({ posts }) {
   const [search, setSearch] = useState("");
   const [badges, setBadges] = useState({});
+  const [height, setHeight] = useState({});
   const [buttonList, setButtonList] = useState([
     "react",
     "angular",
@@ -28,10 +29,13 @@ function Home({ posts }) {
   };
 
   useEffect(() => {
-    if (badges.badges != "" && badges.badges != undefined) {
+    if (badges.badges != undefined) {
       posts[badges.index].imgs = badges.badges;
     }
-  }, [badges, posts]);
+    if (height.height == 0 && height.height != undefined) {
+      posts[height.index].height = height.height;
+    }
+  }, [badges, height, posts]);
 
   return (
     <Layout home={true} setSearch>
@@ -42,7 +46,7 @@ function Home({ posts }) {
 
         <main>
           <div className="d-flex align-content-start flex-wrap mb-2 mt-2">
-            <div className="d-flex align-content-end flex-wrap mb-auto mt-2">
+            <div className="d-flex align-content-end flex-wrap mb-2 mt-2">
               <ButtonList buttonList={buttonList} setSearch={setSearch} />
             </div>
             <div className="ms-auto col-12 col-md-3 d-flex align-content-end justify-content-md-end justify-content-center">
@@ -78,6 +82,7 @@ function Home({ posts }) {
                           index={i}
                           key={i}
                           setBadges={setBadges}
+                          setHeight={setHeight}
                           badges={post.imgs ? post.imgs : undefined}
                         />
                       ))
@@ -101,7 +106,16 @@ function Home({ posts }) {
                               .toLowerCase()
                               .includes(search.toLowerCase())
                         )
-                        .map((post, i) => <PostCard post={post} key={i} />)}
+                        .map((post, i) => (
+                          <PostCard
+                            post={post}
+                            index={i}
+                            key={i}
+                            setBadges={setBadges}
+                            setHeight={setHeight}
+                            badges={post.imgs ? post.imgs : undefined}
+                          />
+                        ))}
                 </div>
               )}
             </div>
@@ -123,7 +137,6 @@ export async function getServerSideProps(ctx) {
   // extract the data
   let data = await response.json();
 
-  //console.log(data)
   return {
     props: {
       posts: data["message"],

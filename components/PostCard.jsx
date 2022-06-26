@@ -4,7 +4,13 @@ import { useRouter } from "next/router";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Image from "next/image";
 
-export default function PostCard({ post, setBadges, badges, index }) {
+export default function PostCard({
+  post,
+  setBadges,
+  badges,
+  index,
+  setHeight,
+}) {
   const [images, setImages] = useState([
     "/img-badges/css.svg",
     "/img-badges/free.svg",
@@ -14,6 +20,12 @@ export default function PostCard({ post, setBadges, badges, index }) {
     "/img-badges/mongo.svg",
     "/img-badges/py.svg",
     "/img-badges/vue.svg",
+    "/img-badges/react.svg",
+    "/img-badges/angular.svg",
+    "/img-badges/github.svg",
+    "/img-badges/mysql.svg",
+    "/img-badges/yt.svg",
+    "/img-badges/google.svg",
   ]);
   const [viewList, setViewList] = useState(false);
 
@@ -23,13 +35,22 @@ export default function PostCard({ post, setBadges, badges, index }) {
     <div className="col-12 p-1" style={{ width: "100%" }}>
       {post.published ? (
         <div className="card p-2 h-100 bg-card mt-1">
-          <h4>{post.title}</h4>
+          <h5>{post.title}</h5>
           <p style={{ fontSize: "13px" }}>{post.content}</p>
           <LinkPreview
             url={post.link}
             descriptionLength={100}
             primaryTextColor="gray"
+            imageHeight={post.height == 0 ? 0 : null}
             className="fw-lighter fs-6 overflow-hidden"
+            onSuccess={(e) => {
+              if (e && e.image == null) {
+                setHeight({
+                  height: 0,
+                  index: index,
+                });
+              }
+            }}
             fallback={
               <a
                 className="card p-3 border border-1 h-100 text-dark Secondary"
@@ -74,13 +95,14 @@ const BadgesList = ({ viewList, images, post, setBadges, index }) => {
       {viewList
         ? images.map((img, i) => (
             <Image
+              className="css-badges-list"
               onClick={() => {
                 addBadgeImg(post.imgs, img, post._id, setBadges, index);
               }}
               key={i}
               src={img}
-              height={27}
-              width={27}
+              height={30}
+              width={30}
               alt={i}
             />
           ))
@@ -98,6 +120,7 @@ const Badges = ({ post, setViewList, viewList, setBadges, index }) => {
             .map((img, i) =>
               (img != "" && img != undefined && img) != null ? (
                 <Image
+                  className="css-badges-list"
                   onClick={() =>
                     removeBadgeImg(post.imgs, img, post._id, setBadges, index)
                   }
@@ -115,8 +138,8 @@ const Badges = ({ post, setViewList, viewList, setBadges, index }) => {
       <Image
         priority
         src={"/img-badges/plus.png"}
-        height={27}
-        width={27}
+        height={30}
+        width={30}
         alt={"more"}
         onClick={() => {
           setViewList(!viewList);
@@ -125,6 +148,7 @@ const Badges = ({ post, setViewList, viewList, setBadges, index }) => {
     </div>
   );
 };
+
 // Publish post
 const addBadgeImg = async (imgs, img, id, setBadges, index) => {
   let arrayImg = "";
@@ -132,7 +156,14 @@ const addBadgeImg = async (imgs, img, id, setBadges, index) => {
     arrayImg = img;
   } else if (imgs != "") {
     if (!imgs.includes(img)) arrayImg = imgs + "," + img;
+    else {
+      arrayImg = imgs;
+    }
+  } else if (imgs == "") {
+    arrayImg = img;
   }
+  //I dont know why  I need to setBadges a couple of times
+  await setBadges({ badges: arrayImg, index: index });
   await setBadges({ badges: arrayImg, index: index });
 
   let post = {
@@ -151,14 +182,15 @@ const addBadgeImg = async (imgs, img, id, setBadges, index) => {
 
 const removeBadgeImg = async (imgs, img, id, setBadges, i) => {
   // change publishing state
-  const arrayImgs = imgs.split(",");
+  let arrayImgs = imgs.split(",");
 
   const index = arrayImgs.indexOf(img);
-  arrayImgs.splice(index, img.length); // 2nd parameter means remove one item only
-
-  setBadges({ badges: arrayImgs.join(), index: i });
+  arrayImgs.splice(index, 1); // 2nd parameter means remove one item only
+  arrayImgs = arrayImgs.join();
+  await setBadges({ badges: arrayImgs, index: i });
+  await setBadges({ badges: arrayImgs, index: i });
   let post = {
-    imgs: arrayImgs.join(),
+    imgs: arrayImgs,
     id: id,
   };
 

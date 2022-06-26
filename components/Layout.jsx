@@ -38,17 +38,17 @@ export default function Layout({ children, title, description, home }) {
                     <div className="col d-flex justify-content-center justify-content-md-start col-12 col-md-6">
                         <Link href='https://www.linkedin.com/in/victor-manuel-velazquez-fuentes-bab088156/'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/48/D5DCE7/linkedin.png" height={40} width={40} className="me-3" />
+                                <img src="https://img.icons8.com/ios-filled/48/D5DCE7/linkedin.png" height={30} width={30} className="me-3 mt-1" />
                             </a>
                         </Link>
                         <Link href='https://github.com/VictorMany'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/github.png" height={40} width={40} className="me-3" />
+                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/github.png" height={30} width={30} className="me-3 mt-1" />
                             </a>
                         </Link>
                         <Link href='https://portfolio-vic-projects.vercel.app'>
                             <a target="_blank" rel="noreferrer">
-                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/copy-link.png" height={40} width={40} />
+                                <img src="https://img.icons8.com/ios-filled/50/D5DCE7/copy-link.png" height={30} width={30}className="mt-1" />
                             </a>
                         </Link>
                     </div>
@@ -70,20 +70,11 @@ export default function Layout({ children, title, description, home }) {
                                     />
                                 </div>
 
-                                <div className="p-2 col-12 col-md-8 subtitle">
+                                <div className="p-2 col-12 col-md-8 subtitle pe-5">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
                                     <p className="ps-1 fw-lighter">There are many courses available for you to learn anything you want. 
-                                        Find the perfect course for you, start learning and improve your skills. Courses can help you find a better job and improve your career.
+                                        Find the perfect course, start learning and improve your skills.
                                     </p>
-                                    <p className="ps-1 fw-lighter">
-                                        Some popular courses include:
-                                    </p>
-                                    <ul className="fw-lighter ">
-                                        <li>Web Development</li>
-                                        <li>Data Science</li>
-                                        <li>Machine Learning</li>
-                                        <li>Artificial Intelligence</li>
-                                    </ul>
                                 </div>
 
                             </div>
@@ -126,8 +117,6 @@ export default function Layout({ children, title, description, home }) {
                     </div>
                 )}
             </div>
-
-
         </div >
     )
 }

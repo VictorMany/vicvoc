@@ -45,7 +45,7 @@ h2 {
   );
   width: 100%;
   padding: 1.5rem;
-  border-radius: 0rem 0rem 15rem 0rem;
+  border-radius: 0rem 0rem 15vw 0rem;
 }
 
 .a {
@@ -72,28 +72,6 @@ h2 {
   }
 }
 
-.my-masonry-grid {
-  display: -webkit-box;
-  /* Not needed if autoprefixing */
-  display: -ms-flexbox;
-  /* Not needed if autoprefixing */
-  display: flex;
-  /* gutter size offset */
-  width: auto;
-}
-
-.my-masonry-grid_column {
-  padding: 2px;
-  /* gutter size */
-  background-clip: padding-box;
-}
-
-/* Style your items */
-.my-masonry-grid_column > div {
-  /* change div to reference your elements you put in <Masonry> */
-  margin-bottom: 5px;
-}
-
 .percent98 {
   width: 49.8%;
 }
@@ -118,7 +96,14 @@ h2 {
   font-size: 11px !important;
   width: 100%;
   margin-top: -0.5rem;
+  
 }
+
+.css-badges-list:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .fw-lighter {
   color: white;
 }
