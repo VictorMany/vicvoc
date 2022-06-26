@@ -18,7 +18,6 @@ export default function Layout({ children, title, description, home }) {
         router.events.on("routeChangeComplete", () => NProgress.done());
 
         return () => {
-            console.log('hace algo')
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, [])
@@ -26,7 +25,6 @@ export default function Layout({ children, title, description, home }) {
 
     return (
         <div>
-
             <Head>
                 <title>{title}</title>
                 <meta
@@ -120,7 +118,6 @@ export default function Layout({ children, title, description, home }) {
         </div >
     )
 }
-
 
 /**
  * Definir las props por default 

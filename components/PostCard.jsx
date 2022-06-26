@@ -45,6 +45,7 @@ export default function PostCard({
             className="fw-lighter fs-6 overflow-hidden"
             onSuccess={(e) => {
               if (e && e.image == null) {
+                console.log(e, "IN FUNCTION SET HEIGHT")
                 setHeight({
                   height: 0,
                   index: index,
@@ -183,7 +184,6 @@ const addBadgeImg = async (imgs, img, id, setBadges, index) => {
 const removeBadgeImg = async (imgs, img, id, setBadges, i) => {
   // change publishing state
   let arrayImgs = imgs.split(",");
-
   const index = arrayImgs.indexOf(img);
   arrayImgs.splice(index, 1); // 2nd parameter means remove one item only
   arrayImgs = arrayImgs.join();
