@@ -70,7 +70,7 @@ function Home({ posts }) {
           </div>
 
           <div className="d-flex justify-content-center">
-            <div style={{ maxWidth: "580px", width: '100%'}}>
+            <div style={{ maxWidth: "580px", width: "100%" }}>
               {posts.length === 0 ? (
                 <h2>No added posts</h2>
               ) : (
@@ -126,12 +126,15 @@ function Home({ posts }) {
   );
 }
 
+/**
+ * 
+ * @param {*} ctx 
+ * @returns 
+ */
 export async function getServerSideProps(ctx) {
   // get the current environment
-
   let dev = process.env.NODE_ENV !== "production";
   let { DEV_URL, PROD_URL } = process.env;
-
   // request posts from api
   let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts`);
   // extract the data
@@ -144,6 +147,14 @@ export async function getServerSideProps(ctx) {
   };
 }
 
+/**
+ *
+ * @param {
+ * title - Button name
+ * seSearchBy - Function that sets value text to seach field
+ * }
+ * @returns
+ */
 const Button = ({ title, setSearchBy }) => {
   return (
     <button
@@ -157,6 +168,14 @@ const Button = ({ title, setSearchBy }) => {
   );
 };
 
+/**
+ *
+ * @param {
+ * buttonList - Array with the information buttons
+ * setSearch - Function of button to set value text to search field
+ * }
+ * @returns
+ */
 const ButtonList = ({ buttonList, setSearch }) => {
   return buttonList.map((button, i) => {
     return (
