@@ -3,7 +3,6 @@ import React from 'react'
 
 
 export default function preview(url) {
-    console.log(url)
     let headers = new Headers();
     headers.append('Content-Type', 'application/text');
     headers.append('Accept', 'application/json');

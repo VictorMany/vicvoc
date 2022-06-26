@@ -59,7 +59,6 @@ async function getPosts(req, res) {
 }
 
 async function addPost(req, res) {
-    console.log(JSON.parse(req.body))
     try {
         // connect to the database
         let {
@@ -114,7 +113,6 @@ async function updatePost(req, res) {
 
 async function addBadgesImg(req, res) {
     let payload = JSON.parse(req.body)
-    console.log(payload.id)
 
     try {
         let {

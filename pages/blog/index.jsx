@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 export default function Index({ posts }) {
   const [search, setSearch] = useState("");
   const [date, setDate] = useState(new Date().toLocaleString());
-  const [imgs, setImages] = useState("");
 
   let today;
   function cambiar() {

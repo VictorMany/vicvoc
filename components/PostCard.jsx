@@ -44,7 +44,6 @@ export default function PostCard({
             imageHeight={post.height == 0 ? 0 : null}
             className="fw-lighter fs-6 overflow-hidden"
             onSuccess={(e) => {
-              console.log(e, "IN FUNCTION SET HEIGHT")
               if (e && e.image == null) {
                 setHeight({
                   height: 0,
