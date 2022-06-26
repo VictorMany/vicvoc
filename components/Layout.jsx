@@ -70,7 +70,8 @@ export default function Layout({ children, title, description, home }) {
 
                                 <div className="p-2 col-12 col-md-8 subtitle pe-5">
                                     <h1 className={`${utilStyles.heading2Xl}`}>{title}</h1>
-                                    <p className="ps-1 fw-lighter">There are many courses available for you to learn anything you want. 
+                                    <p className="ps-1 fw-lighter">
+                                        There are many courses available for you to learn anything you want. 
                                         Find the perfect course, start learning and improve your skills.
                                     </p>
                                 </div>
@@ -92,7 +93,6 @@ export default function Layout({ children, title, description, home }) {
                                     <h2 className={`${utilStyles.heading2Xl}`}>{title}</h2>
                                     <p className="ps-1 fw-lighter">Productivity page</p>
                                     <p className="ps-1 fw-lighter">Sample CRUD notes built in NEXT JS and MongoDB</p>
-
                                 </div>
 
                             </div>
