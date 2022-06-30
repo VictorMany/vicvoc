@@ -46,6 +46,7 @@ h2 {
   width: 100%;
   padding: 1.5rem;
   border-radius: 0rem 0rem 15vw 0rem;
+  margin-top: 3.6rem;
 }
 
 .a {
@@ -69,6 +70,12 @@ h2 {
     background-color: rgb(255, 255, 255);
     box-shadow: none;
     margin: -0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bg-abajo {
+    margin-top: 5.6rem;
   }
 }
 
@@ -96,7 +103,6 @@ h2 {
   font-size: 11px !important;
   width: 100%;
   margin-top: -0.5rem;
-  
 }
 
 .css-badges-list:hover {
